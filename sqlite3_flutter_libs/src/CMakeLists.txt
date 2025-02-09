@@ -1,20 +1,20 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.10)
 set(PROJECT_NAME "sqlite3_flutter_libs")
 project(${PROJECT_NAME} LANGUAGES C CXX)
 
-add_library(${PLUGIN_NAME} SHARED
+add_library(sqlite3_flutter_libs SHARED
   "sqlite3.c"
 )
 
-set_target_properties(${PLUGIN_NAME} PROPERTIES
+set_target_properties(sqlite3_flutter_libs PROPERTIES
   PUBLIC_HEADER sqlite3.h
   OUTPUT_NAME sqlite3
 )
 
-target_compile_definitions(${PLUGIN_NAME} PUBLIC DART_SHARED_LIB)
+target_compile_definitions(sqlite3_flutter_libs PUBLIC DART_SHARED_LIB)
 
 # Note: Keep in sync with https://github.com/simolus3/sqlite-native-libraries/blob/master/sqlite3-native-library/cpp/CMakeLists.txt
-target_compile_definitions(${PLUGIN_NAME} PRIVATE
+target_compile_definitions(sqlite3_flutter_libs PRIVATE
   SQLITE_ENABLE_DBSTAT_VTAB
   SQLITE_ENABLE_FTS5
   SQLITE_ENABLE_RTREE
