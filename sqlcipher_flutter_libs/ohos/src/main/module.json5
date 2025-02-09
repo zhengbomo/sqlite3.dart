@@ -1,0 +1,7 @@
+{
+  module: {
+    name: "sqlcipher_flutter_libs",
+    type: "har",
+    deviceTypes: ["default", "tablet"],
+  },
+}
