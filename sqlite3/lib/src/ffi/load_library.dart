@@ -20,6 +20,7 @@ enum OperatingSystem {
   macOS,
   windows,
   fuchsia,
+  ohos,
 }
 
 /// The instance managing different approaches to load the [DynamicLibrary] for
@@ -57,6 +58,8 @@ DynamicLibrary _defaultOpen() {
     }
 
     // Fall-back to system's libsqlite3 otherwise.
+    return DynamicLibrary.open('libsqlite3.so');
+  } else if (Platform.isOhos) {
     return DynamicLibrary.open('libsqlite3.so');
   } else if (Platform.isIOS) {
     try {
@@ -117,6 +120,7 @@ final class OpenDynamicLibrary {
     if (Platform.isMacOS) return OperatingSystem.macOS;
     if (Platform.isWindows) return OperatingSystem.windows;
     if (Platform.isFuchsia) return OperatingSystem.fuchsia;
+    if (Platform.isOhos) return OperatingSystem.ohos;
     return null;
   }
 
