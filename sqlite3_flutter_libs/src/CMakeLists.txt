@@ -8,7 +8,7 @@ add_library(${PLUGIN_NAME} SHARED
 
 set_target_properties(${PLUGIN_NAME} PROPERTIES
   PUBLIC_HEADER sqlite3.h
-  OUTPUT_NAME ${PLUGIN_NAME}
+  OUTPUT_NAME sqlite3
 )
 
 target_compile_definitions(${PLUGIN_NAME} PUBLIC DART_SHARED_LIB)
