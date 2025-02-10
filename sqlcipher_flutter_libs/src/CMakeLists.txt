@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 set(PROJECT_NAME "sqlcipher_flutter_libs")
 project(${PROJECT_NAME} LANGUAGES C CXX)
 
+
+set(OPENSSL_ROOT_PATH "openssl")
+set(CMAKE_MODULE_PATH ${OPENSSL_ROOT_PATH})
+
 option(OPENSSL_USE_STATIC_LIBS "Whether to prefer linking to OpenSSL statically" ON)
 find_package(OpenSSL REQUIRED)
 
@@ -15,6 +19,8 @@ set_target_properties(sqlcipher_flutter_libs PROPERTIES
 )
 
 target_compile_definitions(sqlcipher_flutter_libs PUBLIC DART_SHARED_LIB)
+
+target_link_libraries(sqlcipher_flutter_libs PRIVATE OpenSSL::Crypto OpenSSL::SSL)
 
 # Note: Keep in sync with https://github.com/simolus3/sqlite-native-libraries/blob/master/sqlite3-native-library/cpp/CMakeLists.txt
 target_compile_definitions(sqlcipher_flutter_libs PRIVATE
