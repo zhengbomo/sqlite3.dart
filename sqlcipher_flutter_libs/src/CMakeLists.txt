@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.10)
 set(PROJECT_NAME "sqlcipher_flutter_libs")
 project(${PROJECT_NAME} LANGUAGES C CXX)
 
+set(OPENSSL_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/openssl")
+set(OPENSSL_ROOT_PATH "${CMAKE_CURRENT_SOURCE_DIR}/openssl")
 
-set(OPENSSL_ROOT_PATH "openssl")
 set(CMAKE_MODULE_PATH ${OPENSSL_ROOT_PATH})
 
 option(OPENSSL_USE_STATIC_LIBS "Whether to prefer linking to OpenSSL statically" ON)
